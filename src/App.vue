@@ -1,13 +1,15 @@
 <template>
 	<div>
 		<Header />
+		<Instagram />
 	</div>
 </template>
 <script>
 	import Header from "@/components/Header"
+	import Instagram from "@/components/Instagram"
 	export default {
 		name: 'App',
-		components: {Header}
+		components: {Header,Instagram}
 	}
 </script>
 

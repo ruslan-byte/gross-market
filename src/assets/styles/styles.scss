@@ -14,3 +14,6 @@ body
 	max-width: 1142px;
 	margin: 0 auto
 }
+@media (min-width: 768px){
+	.container{padding: 0 39px;}
+}
