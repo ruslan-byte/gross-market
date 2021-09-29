@@ -1,0 +1,75 @@
+<template>
+	<button class="button" @click="test" :class="{'button-header': isInHeader, 'button-hide': isScrollInTop && isMobileVersion && isInHeader}">
+		<slot></slot>
+	</button>
+</template>
+<script>
+	export default {
+		name: 'Button',
+		props:{
+			isInHeader:{
+				type:Boolean,
+				default:false,
+			},
+		},
+		data(){
+			return{
+				isScrollInTop:true,
+				isMobileVersion:true,
+			}
+		},
+		created(){
+			this.initButton();
+			window.addEventListener('resize',() => this.initButton());
+		},
+		methods:{
+			initButton()
+			{
+				this.isMobileVersion = !!(window.screen.width < 768)
+				if(this.isInHeader && this.isMobileVersion)
+				{
+					let changeIsScrollInTop = () => {
+						this.isScrollInTop = (window.pageYOffset < 100)
+					}
+					window.addEventListener('scroll',() => changeIsScrollInTop());
+				}
+			},
+			test(){console.log(123)}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.button
+	{
+		cursor: pointer;
+		background: #FFDF31;
+		color:black;
+		border-radius: 8px;
+		min-height: 43px;
+		border:none;
+		transition:opacity 0.3s;
+		font-family: "EuclidCircularB";
+		font-size: 18px;
+		padding: 0 16px;
+	}
+	.button[disabled]{
+		background:#F5F5F5;
+		cursor: default;
+	}
+	.button-header
+	{
+		position: fixed;
+		left:16px;
+		top:8px;
+		width: calc(100% - 30px);
+	}
+	.button-hide{ opacity: 0;}
+	@media (min-width: 768px) {
+		.button-header
+		{
+			position: static;
+			width: unset;
+		}
+	}
+</style>
