@@ -1,33 +1,59 @@
 <template>
 	<header class="header container">
-		<Logo />
-		<div>
-			<Number />
-			<Button isInHeader>заполнить анкету</Button>
+		<div class="header__wr">
+			<Logo />
+			<div class="header__action">
+				<Number />
+				<Button isInHeader @click="showPopup()" >заполнить анкету</Button>
+			</div>
 		</div>
+		<Popup :visible.sync="questionnaireIsOpen" :transparent="true">
+			<Questionnaire />
+		</Popup>
 	</header>
 </template>
 <script>
-	import Button from "@/components/Button"
-	import Number from "@/components/Number"
-	import Logo from "@/components/Logo"
+	import Button from "@/components/Button";
+	import Number from "@/components/Number";
+	import Logo from "@/components/Logo";
+	import Questionnaire from "@/components/Questionnaire";
 	export default {
 		name: 'Header',
-		components: {Button, Number, Logo}
+		components:
+		{
+			Button,
+			Number,
+			Logo,
+			Questionnaire,
+		},
+		data()
+		{
+			return {
+				questionnaireIsOpen: false,
+			}
+		},
+		methods:
+		{
+			showPopup()
+			{
+				this.questionnaireIsOpen = true;
+			},
+		}
 	}
 </script>
 
 <style lang="scss">
-	.header
+	.header__wr
 	{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		min-height: 78px;
 	}
-	@media (min-width: 768px) {
-		.header{min-height: 111px;}
-		.header div
+	@media (min-width: 768px)
+	{
+		.header__wr{min-height: 111px;}
+		.header__action
 		{
 			display: flex;
 			align-items: center;
