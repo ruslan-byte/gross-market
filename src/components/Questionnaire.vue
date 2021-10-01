@@ -126,12 +126,13 @@
 							<vCheckbox
 								v-model="form.personal.v"
 								:error="$v.form.personal.v.$error"
+								@change="formFieldsChangeHandler('personal')"
 							>
 							{{ form.personal.placeholder }}
 							</vCheckbox>
 						</div>
 					</div>
-					<button class="questionnaire__btn">отправить</button>
+					<button class="questionnaire__btn" :disabled="form.personal.error">отправить</button>
 				</form>
 				<div class="questionnaire__info">
 					<h2 class="g-title-2" v-if="purpose.title">{{ purpose.title }}</h2>
@@ -240,7 +241,8 @@
 					personal:
 					{
 						v: false,
-						placeholder: 'я подтверждаю согласие на обработку персональных данных и принимаю условия рассмотрения обращений *'
+						placeholder: 'я подтверждаю согласие на обработку персональных данных и принимаю условия рассмотрения обращений *',
+						error: true,
 					},
 					recaptcha:
 					{
@@ -386,7 +388,7 @@
 	}
 	.questionnaire__btn
 	{
-		background-color: #F5F5F5;
+		background-color: #FFDF31;
 		border-radius: 8px;
 		height: 47px;
 		font-weight: 500;
@@ -397,6 +399,11 @@
 		padding: 0 10px;
 		width: 100%;
 		cursor: pointer;
+		transition: .1s;
+		&:disabled
+		{
+			background-color: #F5F5F5;
+		}
 	}
 	.questionnaire__row
 	{
