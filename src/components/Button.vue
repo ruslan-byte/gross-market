@@ -73,6 +73,7 @@
 		left:16px;
 		top:8px;
 		width: calc(100% - 30px);
+		z-index: 2;
 	}
 	.button-hide{ opacity: 0;}
 	@media (min-width: 768px) {

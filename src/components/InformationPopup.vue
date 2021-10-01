@@ -1,7 +1,12 @@
 <template>
-	<div class="information-popup" >
+	<div
+		class="information-popup"
+		ref="infoPopup"
+		tabindex="0"
+		@keyup.esc="closePopup"
+	>
 		<div class="information-popup__header" :class="{'information-popup__header-active': !isPopupScroling}">
-			<div class="information-popup__close">
+			<div class="information-popup__close" @click="closePopup">
 				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M19 1L1 19" stroke="black" stroke-width="2"/>
 					<path d="M19 19L1 1" stroke="black" stroke-width="2"/>
@@ -42,13 +47,31 @@
 				isPopupScroling:true,
 			}
 		},
-		mounted(){
-			let infoPopup = document.querySelector("body > div > div.information-popup");
-			let changeisPopupScroling = () => {
-				this.isPopupScroling = ( infoPopup.scrollTop < 100 )
-			}
-			infoPopup.addEventListener('scroll',() => changeisPopupScroling());
+		watch:{
+			visibily(){ this.isPopupScroling = true }
 		},
+		mounted(){
+			let changeisPopupScroling = () => {
+				this.isPopupScroling = ( this.$refs.infoPopup.scrollTop < 100 )
+			}
+			this.$refs.infoPopup.addEventListener('scroll',() => changeisPopupScroling());
+		},
+		updated(){
+			if(this.$refs.infoPopup)
+			{
+				this.$refs.infoPopup.focus()
+				let changeisPopupScroling = () => {
+					this.isPopupScroling = ( this.$refs.infoPopup.scrollTop < 100 )
+				}
+				this.$refs.infoPopup.removeEventListener('scroll',() => changeisPopupScroling());
+				this.$refs.infoPopup.addEventListener('scroll',() => changeisPopupScroling());
+			}
+		},
+		methods:{
+			closePopup(){
+				this.$emit('close');
+			}
+		}
 	}
 </script>
 <style lang="scss">
@@ -56,14 +79,15 @@
 	{
 		position: fixed;
 		left:0;
-		top:0;
+		top: 0;
+		z-index: 1000;
 		width: calc(100vw - 28px) ;
 		min-height: 100vh;
-		overflow-y: auto;
 		background: white;
 		z-index: 1000;
 		padding: 0 14px;
 		height: 100%;
+		overflow: auto;
 		h2
 		{
 			font-size: 48px;
@@ -116,11 +140,6 @@
 			align-items: middle;
 			padding:0 14px;
 		}
-		.information-popup__close
-		{
-			position:static;
-
-		}
+		.information-popup__close{position:static;}
 	}
-	body{overflow: hidden}
 </style>
