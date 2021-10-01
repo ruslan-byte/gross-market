@@ -162,7 +162,7 @@
 		{
 			&:after
 			{
-				width: calc( (100% - 1142px) / 2);
+				width: calc( (100% - 1140px) / 2);
 			}
 		}
 	}

@@ -12,146 +12,145 @@
 				</div>
 			</div>
 		</div>
-		<div class="container" v-if="!isSuccess">
-			<h1 class="g-title-1">Работа твоей мечты</h1>
-			<div class="questionnaire__wr">
-				<form class="questionnaire__form" @submit.prevent="submit()">
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner">
-							<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.vacancy.error}">{{ form.vacancy.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
-							<vSelect
-								:placeholder="form.vacancy.placeholder"
-								:errorMsg="form.vacancy.errorMsg"
-								v-model="form.vacancy.v"
-								@change="formFieldsChangeHandler('vacancy')"
-								:error="$v.form.vacancy.v.$error"
-								:options="form.vacancy.options"
-							/>
-						</div>
-					</div>
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner">
-							<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.fio.error}">{{ form.fio.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
-							<vInput
-								:placeholder="form.fio.placeholder"
-								:errorMsg="form.fio.errorMsg"
-								v-model="form.fio.v"
-								@change="formFieldsChangeHandler('fio')"
-								:error="$v.form.fio.v.$error"
-							/>
-						</div>
-					</div>
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner questionnaire__row-inner--small">
-						<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.phone.error}">{{ form.phone.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
-							<vPhoneInput
-								:placeholder="form.phone.placeholder"
-								:errorMsg="form.phone.errorMsg"
-								v-model="form.phone.v"
-								@change="formFieldsChangeHandler('phone')"
-								:error="$v.form.phone.v.$error"
-							/>
-						</div>
-						<div class="questionnaire__row-inner questionnaire__row-inner--small">
-						<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.email.error}">{{ form.email.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
-							<vInput
-								:placeholder="form.email.placeholder"
-								:errorMsg="form.email.errorMsg"
-								v-model="form.email.v"
-								@change="formFieldsChangeHandler('email')"
-								:error="$v.form.email.v.$error"
-							/>
-						</div>
-					</div>
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner questionnaire__row-inner--small">
-							<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.date.error}">{{ form.date.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
-							<vInput
-								:placeholder="form.date.placeholder"
-								:errorMsg="form.date.errorMsg"
-								v-model="form.date.v"
-								@change="formFieldsChangeHandler('date')"
-								:error="$v.form.date.v.$error"
-								:mask="form.date.mask"
-							/>
-						</div>
-						<div class="questionnaire__row-inner questionnaire__row-inner--small">
-							<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.sex.error}">{{ form.sex.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
-							<div class="questionnaire__row-radio">
-								<vRadio
-									v-model="form.sex.v"
-									@change="formFieldsChangeHandler('sex')"
-									:val="'мужской'"
-									:text="'мужской'"
-								/>
-								<vRadio
-									v-model="form.sex.v"
-									@change="formFieldsChangeHandler('sex')"
-									:val="'женский'"
-									:text="'женский'"
+		<div class="questionnaire__body">
+			<div class="container" v-if="!isSuccess">
+				<h1 class="g-title-1">Работа твоей мечты</h1>
+				<div class="questionnaire__wr">
+					<form class="questionnaire__form" @submit.prevent="submit()">
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner">
+								<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.vacancy.error}">{{ form.vacancy.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<vSelect
+									:placeholder="form.vacancy.placeholder"
+									:errorMsg="form.vacancy.errorMsg"
+									v-model="form.vacancy.v"
+									@change="formFieldsChangeHandler('vacancy')"
+									:error="$v.form.vacancy.v.$error"
+									:options="form.vacancy.options"
 								/>
 							</div>
 						</div>
-					</div>
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner">
-							<p class="questionnaire__row-title">{{ form.resume.title }}</p>
-							<vInput
-								:placeholder="form.resume.placeholder"
-								v-model="form.resume.v"
-								:isTextArea="true"
-							/>
-							<vFileInput v-model="form.file.v"/>
-						</div>
-					</div>
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner">
-							<p class="questionnaire__row-title">{{ form.recaptcha.title }}</p>
-							<div class="questionnaire__recaptcha">
-								<label class="questionnaire__recaptcha-body">
-									<vCheckbox
-										v-model="form.recaptcha.v"
-										:error="$v.form.recaptcha.v.$error"
-									>
-									{{ form.recaptcha.placeholder }}
-									</vCheckbox>
-									<img src="/img/recaptcha.png" alt="" class="questionnaire__recaptcha-icon">
-								</label>
-								<div class="questionnaire__recaptcha-msg">{{ form.recaptcha.errorMsg }}</div>
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner">
+								<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.fio.error}">{{ form.fio.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<vInput
+									:placeholder="form.fio.placeholder"
+									:errorMsg="form.fio.errorMsg"
+									v-model="form.fio.v"
+									@change="formFieldsChangeHandler('fio')"
+									:error="$v.form.fio.v.$error"
+								/>
 							</div>
 						</div>
-					</div>
-					<div class="questionnaire__row">
-						<div class="questionnaire__row-inner">
-							<vCheckbox
-								v-model="form.personal.v"
-								:error="$v.form.personal.v.$error"
-								@change="formFieldsChangeHandler('personal')"
-							>
-							{{ form.personal.placeholder }}
-							</vCheckbox>
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner questionnaire__row-inner--small">
+							<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.phone.error}">{{ form.phone.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<vPhoneInput
+									:placeholder="form.phone.placeholder"
+									:errorMsg="form.phone.errorMsg"
+									v-model="form.phone.v"
+									@change="formFieldsChangeHandler('phone')"
+									:error="$v.form.phone.v.$error"
+								/>
+							</div>
+							<div class="questionnaire__row-inner questionnaire__row-inner--small">
+							<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': form.email.v}">{{ form.email.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<vInput
+									:placeholder="form.email.placeholder"
+									v-model="form.email.v"
+								/>
+							</div>
 						</div>
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner questionnaire__row-inner--small">
+								<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': !form.date.error}">{{ form.date.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<vInput
+									:placeholder="form.date.placeholder"
+									:errorMsg="form.date.errorMsg"
+									v-model="form.date.v"
+									@change="formFieldsChangeHandler('date')"
+									:error="$v.form.date.v.$error"
+									:mask="form.date.mask"
+								/>
+							</div>
+							<div class="questionnaire__row-inner questionnaire__row-inner--small">
+								<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': form.sex.v}">{{ form.sex.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<div class="questionnaire__row-radio">
+									<vRadio
+										v-model="form.sex.v"
+										@change="formFieldsChangeHandler('sex')"
+										:val="'мужской'"
+										:text="'мужской'"
+									/>
+									<vRadio
+										v-model="form.sex.v"
+										@change="formFieldsChangeHandler('sex')"
+										:val="'женский'"
+										:text="'женский'"
+									/>
+								</div>
+							</div>
+						</div>
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner">
+								<p class="questionnaire__row-title" :class="{'questionnaire__row-title--is-checked': form.resume.v || form.file.v.name }">{{ form.resume.title }} <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.5L3.76768 8.9963C4.17134 9.50623 4.94668 9.50124 5.34375 8.98615L11.5 1" stroke="#10C300" stroke-width="2" stroke-linecap="round"/></svg></p>
+								<vInput
+									:placeholder="form.resume.placeholder"
+									v-model="form.resume.v"
+									:isTextArea="true"
+								/>
+								<vFileInput v-model="form.file.v"/>
+							</div>
+						</div>
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner">
+								<p class="questionnaire__row-title">{{ form.recaptcha.title }}</p>
+								<div class="questionnaire__recaptcha">
+									<label class="questionnaire__recaptcha-body">
+										<vCheckbox
+											v-model="form.recaptcha.v"
+											:error="$v.form.recaptcha.v.$error"
+										>
+										{{ form.recaptcha.placeholder }}
+										</vCheckbox>
+										<img src="/img/recaptcha.png" alt="" class="questionnaire__recaptcha-icon">
+									</label>
+									<div class="questionnaire__recaptcha-msg">{{ form.recaptcha.errorMsg }}</div>
+								</div>
+							</div>
+						</div>
+						<div class="questionnaire__row">
+							<div class="questionnaire__row-inner">
+								<vCheckbox
+									v-model="form.personal.v"
+									:error="$v.form.personal.v.$error"
+									@change="formFieldsChangeHandler('personal')"
+								>
+								{{ form.personal.placeholder }}
+								</vCheckbox>
+							</div>
+						</div>
+						<button class="questionnaire__btn" :disabled="form.personal.error">отправить</button>
+					</form>
+					<div class="questionnaire__info">
+						<h2 class="g-title-2" v-if="purpose.title">{{ purpose.title }}</h2>
+						<p class="questionnaire__info-abs" v-for="text, i in purpose.texts" :key="i">{{ text }}</p>
+						<a class="questionnaire__info-phone" :href="'tel:' + purpose.phone">{{ purpose.phone }}</a>
 					</div>
-					<button class="questionnaire__btn" :disabled="form.personal.error">отправить</button>
-				</form>
-				<div class="questionnaire__info">
-					<h2 class="g-title-2" v-if="purpose.title">{{ purpose.title }}</h2>
-					<p class="questionnaire__info-abs" v-for="text, i in purpose.texts" :key="i">{{ text }}</p>
-					<a class="questionnaire__info-phone" :href="'tel:' + purpose.phone">{{ purpose.phone }}</a>
 				</div>
 			</div>
-		</div>
-		<div class="container" v-else>
-			<h1 class="g-title-1">Ждем тебя!</h1>
-			<div class="questionnaire__wr">
-				<div class="questionnaire__info">
-					<p class="questionnaire__info-abs">В 2020 году самыми востребованными умениями и качествами на рынке труда станут:</p>
-					<p class="questionnaire__info-quote">Умение ставить цели, планировать свое время, инициативность, настойчивость, высокая мотивация, умение эффективно общаться, любознательность. </p>
-					<p class="questionnaire__info-abs">А профессиональным навыкам можно научить любого человека.</p>
-				</div>
-				<div class="questionnaire__info">
-					<h2 class="g-title-2">Остались вопросы?</h2>
-					<a class="questionnaire__info-phone" :href="'tel:' + purpose.phone">{{ purpose.phone }}</a>
+			<div class="questionnaire__body container" v-else>
+				<h1 class="g-title-1">Ждем тебя!</h1>
+				<div class="questionnaire__wr">
+					<div class="questionnaire__info">
+						<p class="questionnaire__info-abs">В 2020 году самыми востребованными умениями и качествами на рынке труда станут:</p>
+						<p class="questionnaire__info-quote">Умение ставить цели, планировать свое время, инициативность, настойчивость, высокая мотивация, умение эффективно общаться, любознательность. </p>
+						<p class="questionnaire__info-abs">А профессиональным навыкам можно научить любого человека.</p>
+					</div>
+					<div class="questionnaire__info">
+						<h2 class="g-title-2">Остались вопросы?</h2>
+						<a class="questionnaire__info-phone" :href="'tel:' + purpose.phone">{{ purpose.phone }}</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -160,7 +159,7 @@
 </template>
 
 <script>
-	import { required, email } from 'vuelidate/lib/validators'
+	import { required } from 'vuelidate/lib/validators'
 	import validator from '@/services/validator.js';
 	import vInput from '@/components/v-input.vue';
 	import vSelect from '@/components/v-select.vue';
@@ -295,27 +294,12 @@
 						required
 					}
 				},
-				email:
-				{
-					v:
-					{
-						required,
-						email,
-					}
-				},
 				phone:
 				{
 					v:
 					{
 						required,
 						phone: validator.phone,
-					}
-				},
-				sex:
-				{
-					v:
-					{
-						required,
 					}
 				},
 				date:
@@ -377,6 +361,10 @@
 	.questionnaire
 	{
 		position: fixed;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100vh;
 		width: 100%;
 		height: 100%;
 		background-color: #fff;
@@ -385,6 +373,14 @@
 		{
 			margin-bottom: 51px;
 		}
+		.footer
+		{
+			flex: 0 0 auto;
+		}
+	}
+	.questionnaire__body
+	{
+		flex: 1 0 auto;
 	}
 	.questionnaire__btn
 	{
@@ -524,6 +520,7 @@
 	}
 	.questionnaire__header
 	{
+		flex: 0 0 auto;
 		background-color: #F5F5F5;
 		margin-bottom: 48px;
 	}
