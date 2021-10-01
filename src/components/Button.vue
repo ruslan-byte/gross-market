@@ -1,5 +1,9 @@
 <template>
-	<button class="button" @click="test" :class="{'button-header': isInHeader, 'button-hide': isScrollInTop && isMobileVersion && isInHeader}">
+	<button
+		class="button"
+		:class="{'button-header': isInHeader, 'button-hide': isScrollInTop && isMobileVersion && isInHeader,'button-white': isWhite}"
+		@click="clickEvent"
+	>
 		<slot></slot>
 	</button>
 </template>
@@ -11,6 +15,7 @@
 				type:Boolean,
 				default:false,
 			},
+			isWhite:{type:Boolean, default:false}
 		},
 		data(){
 			return{
@@ -34,7 +39,10 @@
 					window.addEventListener('scroll',() => changeIsScrollInTop());
 				}
 			},
-			test(){console.log(123)}
+			clickEvent()
+			{
+				this.$emit('click')
+			}
 		}
 	}
 </script>
@@ -57,6 +65,7 @@
 		background:#F5F5F5;
 		cursor: default;
 	}
+	.button-white{background: white}
 	.button-header
 	{
 		position: fixed;

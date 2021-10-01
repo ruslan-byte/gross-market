@@ -2,14 +2,16 @@
 	<div>
 		<Header />
 		<Instagram />
+		<Map />
 	</div>
 </template>
 <script>
 	import Header from "@/components/Header"
 	import Instagram from "@/components/Instagram"
+	import Map from "@/components/Map"
 	export default {
 		name: 'App',
-		components: {Header,Instagram}
+		components: {Header,Instagram, Map}
 	}
 </script>
 
@@ -22,11 +24,5 @@
 		font-weight: 500;
 		font-style: normal;
 		font-display: swap;
-	}
-	body
-	{
-		font-family: "EuclidCircularB";
-		font-weight: 500;
-		margin: 0;
 	}
 </style>
