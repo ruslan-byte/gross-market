@@ -13,7 +13,6 @@
 	import Header from "@/components/Header"
 	import Instagram from "@/components/Instagram"
 	import Map from "@/components/Map"
-	import Header from "@/components/Header";
 	import Footer from "@/components/Footer";
 	import MainSlider from "@/components/MainSlider";
 	import CardsSlider from "@/components/CardsSlider";
@@ -26,6 +25,8 @@
 			MainSlider,
 			CardsSlider,
 			Footer,
+			Instagram,
+			Map,
 		},
 		data()
 		{
