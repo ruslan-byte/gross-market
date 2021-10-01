@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<Popup :visible.sync="questionnaireIsOpen" :transparent="true">
-			<Questionnaire />
+			<Questionnaire @close="questionnaireIsOpen = false"/>
 		</Popup>
 	</header>
 </template>
