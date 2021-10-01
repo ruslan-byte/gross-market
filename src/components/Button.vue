@@ -69,6 +69,7 @@
 	.button-header
 	{
 		position: fixed;
+		z-index:1000;
 		left:16px;
 		top:8px;
 		width: calc(100% - 30px);

@@ -3,9 +3,9 @@
 		<h2>география</h2>
 		<div id="map"></div>
 		<div class="map__buttons">
-			<Button :isWhite="isOnlyNaturalPersonMarkersActive" @click = "activateThisMarkers(true,false)">юрлица</Button>
-			<Button :isWhite="isOnlyEntityMarkersActive" @click = "activateThisMarkers(false,true)">физлица</Button>
-			<Button :isWhite="isAllMarkersActive" @click = "activateThisMarkers(true,true)">показать всё</Button>
+			<Button :isWhite="markerFilter !== 'entity'" @click = "setMarkerFilterAndInitMarkers('entity')">юрлица</Button>
+			<Button :isWhite="markerFilter !== 'naturalPerson'" @click = "setMarkerFilterAndInitMarkers('naturalPerson')">физлица</Button>
+			<Button :isWhite="markerFilter !== 'all'" @click = "setMarkerFilterAndInitMarkers('all')">показать всё</Button>
 		</div>
 	</div>
 </template>
@@ -31,9 +31,7 @@
 					{lat: 55.7755612, lng: 37.5347919},
 					{lat: 55.7855612, lng: 37.5747919},
 				],
-				isOnlyNaturalPersonMarkersActive:false,
-				isOnlyEntityMarkersActive:false,
-				isAllMarkersActive:true,
+				markerFilter:'all',
 				map:null,
 				google:null,
 				markersList:[],
@@ -43,15 +41,14 @@
 		{
 			const loader =  new Loader('AIzaSyCOoul-3RqzLsJAXBExE72K1lZVIlBtQ5s', {});
 			this.google = await loader.load();
-			this.mapInit();
+			this.initMap();
 		},
 		methods:
 		{
-			mapInit(){
+			initMap(){
 				this.map = new this.google.maps.Map(document.getElementById('map'), {
 					center: {lat: 55.7488401, lng: 37.6110285},
 					zoom: 12,
-					mapId: "cd3c365a0cad08c2",
 					zoomControl: true,
 					mapTypeControl: false,
 					scaleControl: false,
@@ -59,13 +56,13 @@
 					rotateControl: false,
 					fullscreenControl: false
 				});
-				this.markerInit();
+				this.initMarkers();
 			},
-			markerInit()
+			initMarkers()
 			{
 				const markerImageUrl = "https://i.ibb.co/QNj36yd/Group-37.png"
-				let markersCoords = (this.isAllMarkersActive)?[...this.markerGroupEntityCoords, ...this.markerGroupNaturalPersonCoords]:(this.isOnlyNaturalPersonMarkersActive)?this.markerGroupNaturalPersonCoords : this.markerGroupEntityCoords;
-					this.markersList.forEach((marker)=> marker.setMap(null))
+				let markersCoords = (this.markerFilter === 'all' ) ? [...this.markerGroupEntityCoords, ...this.markerGroupNaturalPersonCoords]: (this.markerFilter === 'naturalPerson' )? this.markerGroupNaturalPersonCoords : this.markerGroupEntityCoords;
+				this.markersList.forEach((marker)=> marker.setMap(null))
 				for(let markerCoord of markersCoords)
 				{
 					let marker = new this.google.maps.Marker({
@@ -76,42 +73,34 @@
 					this.markersList.push(marker);
 				}
 			},
-			activateThisMarkers(naturalPersonMarkersState, entityMarkersState)
+			setMarkerFilterAndInitMarkers(newValueMarkerFilter)
 			{
-				if(naturalPersonMarkersState && entityMarkersState)
+				if(this.markerFilter !== newValueMarkerFilter)
 				{
-					this.isAllMarkersActive = true;
-					this.isOnlyNaturalPersonMarkersActive = false;
-					this.isOnlyEntityMarkersActive = false;
+					this.markerFilter = newValueMarkerFilter;
+					this.initMarkers();
 				}
-				else
-				{
-					this.isAllMarkersActive=false;
-					this.isOnlyNaturalPersonMarkersActive = naturalPersonMarkersState;
-					this.isOnlyEntityMarkersActive = entityMarkersState;
-				}
-				this.markerInit();
 			}
 		}
 	}
 </script>
 <style lang="scss">
-	.container.map{margin-bottom: 30px;}
+	.container.map
+	{
+		margin-bottom: 30px;
+		padding: 0;
+	}
 	#map
 	{
 		margin-bottom: 100px;
-		min-height: 540px;
+		min-height: 600px;
 	}
-	.map
-	{
-		position: relative;
-		border-radius: 8px;
-	}
+	.map{ position: relative;}
 	.map__buttons
 	{
 		position:absolute;
-		left:60px;
-		top:400px;
+		left:15px;
+		top:423px;
 		z-index: 1000;
 		button
 		{
@@ -119,4 +108,15 @@
 			margin-bottom: 8px;
 		}
 	}
+	div[aria-label="Map" ]> div:first-of-type > div:last-child{filter:grayscale(1);}
+	@media(min-width: 768px)
+	{
+		.map__buttons{left:39px;}
+	}
+	@media(min-width: 1110px)
+	{
+		.container.map{	padding: 0 39px;}
+		.map__buttons{left:63px;}
+	}
+
 </style>
