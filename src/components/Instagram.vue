@@ -1,4 +1,4 @@
-<template>
+he<template>
 	<div class="instagram container">
 		<h2>мы в инстаграме</h2>
 		<ul class="instagram__image-list">
@@ -104,7 +104,6 @@
 			li:nth-of-type(2)
 			{
 				width: calc(50% - 15px);
-				height: 330px;
 			}
 		}
 	}

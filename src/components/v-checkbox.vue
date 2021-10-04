@@ -4,8 +4,8 @@
 			type="checkbox"
 			name="name"
 			class="v-checkbox__input"
-			:checked="modelValue"
-			@input="$emit('update:modelValue', $event.target.checked)"
+			:checked="value"
+			@input="$emit('input', $event.target.checked)"
 			@change="$emit('change', value)"
 		>
 		<div class="v-checkbox__body">
@@ -21,7 +21,7 @@
 	export default {
 		name: 'g-input',
 		props: {
-			modelValue: Boolean,
+			value: Boolean,
 			error: Boolean,
 		}
 	}
@@ -38,7 +38,11 @@
 			.v-checkbox__input:enabled~.v-checkbox__body .v-checkbox__box,
 			.v-checkbox__input:enabled:not(:checked) ~ .v-checkbox__body:hover .v-checkbox__box
 			{
-				border-color: #E45131;
+				background-color: #FF666630;
+			}
+			.v-checkbox__text
+			{
+				color: #FF6666;
 			}
 		}
 	}

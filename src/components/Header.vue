@@ -4,11 +4,11 @@
 			<Logo />
 			<div class="header__action">
 				<Number />
-				<Button isInHeader @click="showPopup()" >заполнить анкету</Button>
+				<Button isInHeader @click="questionnaireIsOpen = true" >заполнить анкету</Button>
 			</div>
 		</div>
 		<Popup :visible.sync="questionnaireIsOpen" :transparent="true">
-			<Questionnaire />
+			<Questionnaire @close="questionnaireIsOpen = false"/>
 		</Popup>
 	</header>
 </template>

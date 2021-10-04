@@ -39,7 +39,7 @@
 						markers: ['пекарь', 'валентин'],
 					},
 					{
-						title: 'У тебя к этому талант',
+						title: 'У тебя всё под контролем',
 						imgUrl: './img/MainSlider2.png',
 						markers: ['пекарь', 'валентин'],
 						markersType: 2,

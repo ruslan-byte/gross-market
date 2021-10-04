@@ -37,7 +37,6 @@
 <script>
 	import Slick from 'vue-slick';
 	import 'slick-carousel/slick/slick.css';
-
 	export default {
 		name: 'main-slider',
 		props:
@@ -86,8 +85,11 @@
 		min-height: 591px;
 		position: relative;
 		background-color: #F5F5F5;
-		padding: 48px 15px 15px;
 		overflow: hidden;
+	}
+	.main-slider__slide-inner
+	{
+		padding: 48px 15px 15px;
 	}
 	.main-slider__slide-img
 	{
@@ -129,12 +131,12 @@
 			&:first-of-type
 			{
 				right: 17%;
-				top: 96px;
+				top: 20%;
 			}
 			&:nth-of-type(2)
 			{
 				left: 11%;
-				bottom: 89px;
+				bottom: 20%;
 			}
 		}
 		&--reverse
@@ -142,12 +144,12 @@
 			&:first-of-type
 			{
 				left: 17%;
-				top: 96px;
+				top: 20%;
 			}
 			&:nth-of-type(2)
 			{
 				right: 11%;
-				bottom: 89px;
+				bottom: 20%;
 			}
 		}
 	}
@@ -271,18 +273,37 @@
 	}
 	@media (min-width: 1440px)
 	{
+		.main-slider
+		{
+			.main-slider__slide
+			{
+				display: flex;
+				height: 100%;
+				.container
+				{
+					width: 100%;
+					position: relative;
+				}
+			}
+		}
 		.main-slider__slide-img
 		{
 			display: flex;
 			align-items: center;
-			width: 612px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 680px;
+			height: 612px;
 		}
 		.main-slider__slide-img-wr
 		{
-			transform: scale(1.2);
 			border-radius: 50%;
 			height: 100%;
 			width: 100%;
+		}
+		.main-slider__slide-title
+		{
+			width: 25.3%;
 		}
 	}
 </style>
