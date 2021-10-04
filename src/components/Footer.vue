@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<Popup :visible.sync="isOpenInformationPopup" :transparent="true">
-			<InformationPopup :visibily="isOpenInformationPopup" @close="isOpenInformationPopup = false"/>
+			<InformationPopup @close="isOpenInformationPopup = false"/>
 		</Popup>
 	</footer>
 </template>

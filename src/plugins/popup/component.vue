@@ -72,7 +72,7 @@
 		width:100%;
 		height: 100%;
 		overflow: auto;
-		z-index: 10;
+		z-index: 1000;
 		/*&--transparent
 		{
 			background-color: transparent;

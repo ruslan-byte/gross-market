@@ -3,7 +3,6 @@
 		class="information-popup"
 		ref="infoPopup"
 		tabindex="0"
-		@keyup.esc="closePopup"
 	>
 		<div class="information-popup__header" :class="{'information-popup__header-active': !isPopupScroling}">
 			<div class="information-popup__close" @click="closePopup">
@@ -44,28 +43,17 @@
 		name: 'information-popup',
 		data(){
 			return{
-				isPopupScroling:true,
+				isPopupScroling: true,
 			}
-		},
-		watch:{
-			visibily(){ this.isPopupScroling = true }
 		},
 		mounted(){
+			let popup = document.querySelector(".popup-overlay");
+			popup.focus()
 			let changeisPopupScroling = () => {
-				this.isPopupScroling = ( this.$refs.infoPopup.scrollTop < 100 )
+				this.isPopupScroling = ( popup.scrollTop < 100 )
 			}
-			this.$refs.infoPopup.addEventListener('scroll',() => changeisPopupScroling());
-		},
-		updated(){
-			if(this.$refs.infoPopup)
-			{
-				this.$refs.infoPopup.focus()
-				let changeisPopupScroling = () => {
-					this.isPopupScroling = ( this.$refs.infoPopup.scrollTop < 100 )
-				}
-				this.$refs.infoPopup.removeEventListener('scroll',() => changeisPopupScroling());
-				this.$refs.infoPopup.addEventListener('scroll',() => changeisPopupScroling());
-			}
+			popup.removeEventListener('scroll',() => changeisPopupScroling());
+			popup.addEventListener('scroll',() => changeisPopupScroling());
 		},
 		methods:{
 			closePopup(){
@@ -77,16 +65,10 @@
 <style lang="scss">
 	.information-popup
 	{
-		position: fixed;
-		left:0;
-		top: 0;
-		z-index: 1000;
-		width: calc(100vw - 28px) ;
+		position:relative;
 		min-height: 100vh;
 		background: white;
-		z-index: 1000;
 		padding: 0 14px;
-		height: 100%;
 		overflow: auto;
 		h2
 		{
@@ -141,5 +123,32 @@
 			padding:0 14px;
 		}
 		.information-popup__close{position:static;}
+	}
+	@media (min-width: 768px)
+	{
+		.information-popup
+		{
+			width: 80%;
+			min-width: 684px;
+			max-width: 1110px;
+			margin:72px auto;
+			border-radius: 8px;
+			h2
+			{
+				font-size: 72px;
+				line-height: 66px;
+				max-width: 80%;
+			}
+		}
+		.information-popup__header-active
+		{
+			width: 80%;
+			min-width: 684px;
+			max-width: 1110px;
+			left: auto;
+			right: auto;
+			padding: 0;
+		}
+		.information-popup__content-scroll{padding-top: 155px;}
 	}
 </style>
