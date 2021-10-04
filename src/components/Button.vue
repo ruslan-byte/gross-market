@@ -74,7 +74,11 @@
 		top:8px;
 		width: calc(100% - 30px);
 	}
-	.button-hide{ opacity: 0;}
+	.button-hide
+	{
+		opacity: 0;
+		pointer-events: none;
+	}
 	@media (min-width: 768px) {
 		.button-header
 		{
