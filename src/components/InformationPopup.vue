@@ -133,12 +133,12 @@
 			max-width: 1110px;
 			margin:72px auto;
 			border-radius: 8px;
-			h2
-			{
-				font-size: 72px;
-				line-height: 66px;
-				max-width: 80%;
-			}
+		}
+		.information-popup__header h2
+		{
+			font-size: 72px;
+			line-height: 66px;
+			max-width: 80%;
 		}
 		.information-popup__header-active
 		{
@@ -148,7 +148,12 @@
 			left: auto;
 			right: auto;
 			padding: 0;
+			h2 {font-size: 24px;}
 		}
 		.information-popup__content-scroll{padding-top: 155px;}
+	}
+	@media (min-width: 1440px)
+	{
+		.information-popup{ padding: 0 95px; }
 	}
 </style>
