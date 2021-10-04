@@ -44,10 +44,19 @@
 					infinite: false,
 					variableWidth: true,
 					mobileFirst: true,
+					centerMode:true,
 					rows: 0,
 					prevArrow: '<div class="cards-slider__arrow cards-slider__arrow--prev"><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.2" d="M0.5 5.13399C-0.166667 5.51889 -0.166667 6.48114 0.5 6.86604L8 11.1962C8.66667 11.5811 9.5 11.0999 9.5 10.3301V1.66989C9.5 0.900087 8.66667 0.418962 8 0.803863L0.5 5.13399Z" fill="black"/></svg></div>',
 					nextArrow: '<div class="cards-slider__arrow cards-slider__arrow--next"><svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 5.13399C10.1667 5.51889 10.1667 6.48114 9.5 6.86604L2 11.1962C1.33333 11.5811 0.5 11.0999 0.5 10.3301V1.66989C0.5 0.900087 1.33333 0.418962 2 0.803863L9.5 5.13399Z" fill="black"/></svg></div>',
 					appendArrows: '._cards-slider__arrows',
+					responsive: [
+						{
+							breakpoint: 425,
+							settings: {
+								centerMode:false,
+							}
+						},
+					]
 				},
 			};
 		},
@@ -64,6 +73,7 @@
 	.cards-slider
 	{
 		overflow: hidden;
+		margin-bottom: 48px;
 		.slick-list
 		{
 			margin: 0 -15px 0 0;
@@ -144,6 +154,7 @@
 		.cards-slider
 		{
 			position: relative;
+			margin-bottom: 73px;
 			&:after
 			{
 				content: '';
@@ -168,6 +179,7 @@
 	}
 	@media (min-width: 1440px)
 	{
+		.cards-slider{margin-bottom: 71px;}
 		.cards-slider__top
 		{
 			display: flex;
