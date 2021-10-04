@@ -10,21 +10,12 @@ he<template>
 <script>
 	export default
 	{
+		props:{imageList:Array},
 		data(){
 			return{
-				imageList:[
-					{index:1, imageSrc:"#", url:"https://www.restate.ru/attachment/e42d81bf0c58bdb88b51673e2ed3b3702153d3de/proportional/1600x1600/AF1QipMTkqlsrgHfUeXu33ilViUvYmNMy_PpAL3C96Oi%3Ds1600-w1600"},
-					{index:2, imageSrc:"#", url:"https://www.restate.ru/attachment/e42d81bf0c58bdb88b51673e2ed3b3702153d3de/proportional/1600x1600/AF1QipMTkqlsrgHfUeXu33ilViUvYmNMy_PpAL3C96Oi%3Ds1600-w1600"},
-					{index:3, imageSrc:"#", url:"https://www.restate.ru/attachment/e42d81bf0c58bdb88b51673e2ed3b3702153d3de/proportional/1600x1600/AF1QipMTkqlsrgHfUeXu33ilViUvYmNMy_PpAL3C96Oi%3Ds1600-w1600"},
-					{index:4, imageSrc:"#", url:"https://www.restate.ru/attachment/e42d81bf0c58bdb88b51673e2ed3b3702153d3de/proportional/1600x1600/AF1QipMTkqlsrgHfUeXu33ilViUvYmNMy_PpAL3C96Oi%3Ds1600-w1600"},
-					{index:5, imageSrc:"#", url:"https://www.restate.ru/attachment/e42d81bf0c58bdb88b51673e2ed3b3702153d3de/proportional/1600x1600/AF1QipMTkqlsrgHfUeXu33ilViUvYmNMy_PpAL3C96Oi%3Ds1600-w1600"},
-				],
-				countViewImage:4,
+				countViewImage:5,
 				isAddButtonVisible:true,
 			}
-		},
-		created(){
-			this.countViewImage = this.imageList.length;
 		},
 		methods:
 		{

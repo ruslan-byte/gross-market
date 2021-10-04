@@ -1,11 +1,14 @@
 <template>
 	<div>
-		<Header />
-		<MainSlider :data="mainSliderdata" />
-		<CardsSlider :data="CardsSlider" />
-		<Instagram />
+		<Header @showPopup="isQuestionnaireOpen = true"/>
+		<MainSlider :data="mainSliderdata" @showPopup = "isQuestionnaireOpen = true"/>
+		<CardsSlider :data="CardsSlider" @showPopup="isQuestionnaireOpen = true"/>
+		<Instagram :imageList="imageList"/>
 		<Map />
 		<Footer />
+		<Popup :visible.sync="isQuestionnaireOpen" :transparent="true">
+			<Questionnaire @close="isQuestionnaireOpen = false"/>
+		</Popup>
 	</div>
 </template>
 
@@ -16,6 +19,7 @@
 	import Footer from "@/components/Footer";
 	import MainSlider from "@/components/MainSlider";
 	import CardsSlider from "@/components/CardsSlider";
+	import Questionnaire from "@/components/Questionnaire";
 
 	export default {
 		name: 'App',
@@ -27,6 +31,7 @@
 			Footer,
 			Instagram,
 			Map,
+			Questionnaire,
 		},
 		data()
 		{
@@ -90,8 +95,21 @@
 							desc: 'Доставка товара по магазинам и гипермаркетам компании в обслуживаемом регионе',
 							imgUrl: './img/CardsSlider7.png',
 						},
-					]
-				}
+					],
+
+				},
+				imageList:[
+					{index:1, imageSrc:"#", url:"img/plug.png"},
+					{index:2, imageSrc:"#", url:"img/plug.png"},
+					{index:3, imageSrc:"#", url:"img/plug.png"},
+					{index:4, imageSrc:"#", url:"img/plug.png"},
+					{index:5, imageSrc:"#", url:"img/plug.png"},
+					{index:6, imageSrc:"#", url:"img/plug.png"},
+					{index:7, imageSrc:"#", url:"img/plug.png"},
+					{index:8, imageSrc:"#", url:"img/plug.png"},
+					{index:9, imageSrc:"#", url:"img/plug.png"},
+				],
+				isQuestionnaireOpen: false,
 			};
 		}
 	}

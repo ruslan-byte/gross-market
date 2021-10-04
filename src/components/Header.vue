@@ -4,19 +4,15 @@
 			<Logo />
 			<div class="header__action">
 				<Number />
-				<Button isInHeader @click="questionnaireIsOpen = true" >заполнить анкету</Button>
+				<Button isInHeader @click="showPopup">заполнить анкету</Button>
 			</div>
 		</div>
-		<Popup :visible.sync="questionnaireIsOpen" :transparent="true">
-			<Questionnaire @close="questionnaireIsOpen = false"/>
-		</Popup>
 	</header>
 </template>
 <script>
 	import Button from "@/components/Button";
 	import Number from "@/components/Number";
 	import Logo from "@/components/Logo";
-	import Questionnaire from "@/components/Questionnaire";
 	export default {
 		name: 'Header',
 		components:
@@ -24,19 +20,12 @@
 			Button,
 			Number,
 			Logo,
-			Questionnaire,
-		},
-		data()
-		{
-			return {
-				questionnaireIsOpen: false,
-			}
 		},
 		methods:
 		{
 			showPopup()
 			{
-				this.questionnaireIsOpen = true;
+				this.$emit('showPopup')
 			},
 		}
 	}

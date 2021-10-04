@@ -11,7 +11,12 @@
 				ref="slick"
 				:options="sliderOptions"
 			>
-				<div class="cards-slider__slide" v-for="slide, i in data.slides" :key="i">
+				<div
+				class="cards-slider__slide"
+				v-for="slide, i in data.slides"
+				:key="i"
+				@click="showPopup"
+				>
 					<div class="cards-slider__slide-inner">
 						<div class="cards-slider__slide__title">{{ slide.title }}</div>
 					</div>
@@ -35,6 +40,10 @@
 		props:
 		{
 			data: Object,
+		},
+		components:
+		{
+			Slick,
 		},
 		data()
 		{
@@ -60,12 +69,12 @@
 				},
 			};
 		},
-		components:
-		{
-			Slick,
-		},
 		methods:
-		{},
+		{
+			showPopup(){
+				this.$emit("showPopup");
+			}
+		},
 	}
 </script>
 
@@ -89,13 +98,8 @@
 		border-radius: 8px;
 		margin: 0 15px 0 0;
 		overflow: hidden;
-		&:hover
-		{
-			.cards-slider__slide-hover
-			{
-				transform: translateY(0);
-			}
-		}
+		cursor: pointer;
+		&:hover .cards-slider__slide-hover{transform: translateY(0);}
 	}
 	.cards-slider__slide-inner
 	{
