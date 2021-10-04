@@ -101,7 +101,6 @@
 		position:absolute;
 		left:15px;
 		top:423px;
-		z-index: 1000;
 		button
 		{
 			display: block;
