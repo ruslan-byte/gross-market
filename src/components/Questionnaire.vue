@@ -169,6 +169,7 @@
 	import vCheckbox from '@/components/v-checkbox.vue';
 	import Footer from "@/components/Footer";
 	import Logo from "@/components/Logo";
+	import axios from "axios";
 	export default {
 		name: 'Questionnaire',
 		props:
@@ -333,7 +334,28 @@
 				if(!this.$v.form.$error)
 				{
 					this.isSuccess = true;
+					this.sendFromData();
 				}
+			},
+			getDataInFormData()
+			{
+				let formData = new FormData();
+				for(let formPlace in this.form)
+				{
+					formData.append(formPlace,this.form[formPlace].v)
+				}
+				return formData
+			},
+			sendFromData()
+			{
+				let formData = this.getDataInFormData();
+				axios.post("http://localhost:3000/anketa",formData)
+				.then(function (response) {
+					console.log(response);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 			},
 			formFieldsChangeHandler(field)
 			{
@@ -349,10 +371,6 @@
 				this.$emit('close');
 			}
 		},
-		mounted()
-		{},
-		computed:
-		{},
 	}
 </script>
 
