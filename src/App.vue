@@ -146,6 +146,7 @@
 </script>
 
 <style lang="scss">
+	@import "@/assets/styles/styles.scss";
 	body{margin: 0;}
 	@font-face
 	{
