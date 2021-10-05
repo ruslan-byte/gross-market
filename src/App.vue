@@ -20,6 +20,7 @@
 	import MainSlider from "@/components/MainSlider";
 	import CardsSlider from "@/components/CardsSlider";
 	import Questionnaire from "@/components/Questionnaire";
+	import axios from "axios";
 
 	export default {
 		name: 'App',
@@ -32,6 +33,13 @@
 			Instagram,
 			Map,
 			Questionnaire,
+		},
+		mounted()
+		{
+			axios.get('http://localhost:3000/instagramSrc')
+			.then(response => {
+				this.imageList  = response.data;
+			})
 		},
 		data()
 		{
@@ -99,19 +107,36 @@
 
 				},
 				imageList:[
-					{index:1, imageSrc:"#", url:"img/plug.png"},
-					{index:2, imageSrc:"#", url:"img/plug.png"},
-					{index:3, imageSrc:"#", url:"img/plug.png"},
-					{index:4, imageSrc:"#", url:"img/plug.png"},
-					{index:5, imageSrc:"#", url:"img/plug.png"},
-					{index:6, imageSrc:"#", url:"img/plug.png"},
-					{index:7, imageSrc:"#", url:"img/plug.png"},
-					{index:8, imageSrc:"#", url:"img/plug.png"},
-					{index:9, imageSrc:"#", url:"img/plug.png"},
+					{
+						index: 1,
+						imageSrc: "img/plug.png",
+						url: "#"
+					},
+					{
+						index: 2,
+						imageSrc: "img/plug.png",
+						url: "#"
+					},
+					{
+						index: 3,
+						imageSrc: "img/plug.png",
+						url: "#"
+					},
+					{
+						index: 4,
+						imageSrc: "img/plug.png",
+						url: "#"
+					},
+					{
+						index: 5	,
+						imageSrc: "img/plug.png",
+						url: "#"
+					},
+
 				],
 				isQuestionnaireOpen: false,
 			};
-		}
+		},
 	}
 </script>
 

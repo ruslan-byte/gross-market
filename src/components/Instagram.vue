@@ -2,7 +2,11 @@ he<template>
 	<div class="instagram container">
 		<h2>мы в инстаграме</h2>
 		<ul class="instagram__image-list">
-			<li v-for="image of countViewImage" :key="image"><a :href="imageList[image-1].imageSrc"><img :src="imageList[image-1].url"></a></li>
+			<li v-for="image of countViewImage" :key="image">
+				<a :href="imageList[image-1].url">
+					<img :src="imageList[image-1].imageSrc">
+				</a>
+			</li>
 		</ul>
 		<button @click="addCountViewImage" v-if="isAddButtonVisible">показать ещё</button>
 	</div>
@@ -13,9 +17,13 @@ he<template>
 		props:{imageList:Array},
 		data(){
 			return{
-				countViewImage:5,
+				countViewImage:0,
 				isAddButtonVisible:true,
 			}
+		},
+		mounted()
+		{
+			this.countViewImage = (this.imageList.length < 5)? this.imageList.length : 5
 		},
 		methods:
 		{
