@@ -92,10 +92,16 @@
 	@media(min-width: 768px)
 	{
 		.map__buttons{left:39px;}
+		.container.map h2{padding: 0 39px;}
 	}
 	@media(min-width: 1110px)
 	{
-		.container.map{	padding: 0 39px;}
+		.container.map
+		{
+			padding: 0 39px;
+			margin-bottom: 72px;
+			h2{	padding: 0}
+		}
 		.map__buttons{left:63px;}
 	}
 
