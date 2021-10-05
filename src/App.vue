@@ -4,7 +4,7 @@
 		<MainSlider :data="mainSliderdata" @showPopup = "isQuestionnaireOpen = true"/>
 		<CardsSlider :data="CardsSlider" @showPopup="isQuestionnaireOpen = true"/>
 		<Instagram :imageList="imageList"/>
-		<Map />
+		<Map :mapData="map"/>
 		<Footer />
 		<Popup :visible.sync="isQuestionnaireOpen" :transparent="true">
 			<Questionnaire @close="isQuestionnaireOpen = false"/>
@@ -39,6 +39,10 @@
 			axios.get('http://localhost:3000/instagramSrc')
 			.then(response => {
 				this.imageList  = response.data;
+			})
+			axios.get('http://localhost:3000/map')
+			.then(response => {
+				this.map  = response.data;
 			})
 		},
 		data()
@@ -134,6 +138,7 @@
 					},
 
 				],
+				map:{},
 				isQuestionnaireOpen: false,
 			};
 		},

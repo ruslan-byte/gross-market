@@ -15,22 +15,9 @@
 	export default
 	{
 		components:{Button},
+		props:{mapData:Object},
 		data(){
 			return{
-				markerGroupNaturalPersonCoords: [
-					{lat: 55.7555612, lng: 37.6647919},
-					{lat: 55.7455612, lng: 37.6747919},
-					{lat: 55.715612, lng: 37.6647919},
-					{lat: 55.7255612, lng: 37.5647919},
-					{lat: 55.7355612, lng: 37.6647919},
-				],
-				markerGroupEntityCoords: [
-					{lat: 55.7555612, lng: 37.6757919},
-					{lat: 55.7555612, lng: 37.5647919},
-					{lat: 55.7655612, lng: 37.5847919},
-					{lat: 55.7755612, lng: 37.5347919},
-					{lat: 55.7855612, lng: 37.5747919},
-				],
 				markerFilter:'all',
 				map:null,
 				google:null,
@@ -46,23 +33,17 @@
 		methods:
 		{
 			initMap(){
-				this.map = new this.google.maps.Map(document.getElementById('map'), {
-					center: {lat: 55.7488401, lng: 37.6110285},
-					zoom: 12,
-					zoomControl: true,
-					mapTypeControl: false,
-					scaleControl: false,
-					streetViewControl: false,
-					rotateControl: false,
-					fullscreenControl: false
-				});
+				console.log("this.mapData.mapOptions", this.mapData.mapOptions);
+				this.map = new this.google.maps.Map(document.getElementById('map'), this.mapData.mapOptions);
 				this.initMarkers();
 			},
 			initMarkers()
 			{
 				const markerImageUrl = "https://i.ibb.co/QNj36yd/Group-37.png"
-				let markersCoords = (this.markerFilter === 'all' ) ? [...this.markerGroupEntityCoords, ...this.markerGroupNaturalPersonCoords]: (this.markerFilter === 'naturalPerson' )? this.markerGroupNaturalPersonCoords : this.markerGroupEntityCoords;
+				let markersCoords = (this.markerFilter === 'all' ) ? [...this.mapData.mapMarkers.markerGroupEntityCoords, ...this.mapData.mapMarkers.markerGroupNaturalPersonCoords]: (this.markerFilter === 'naturalPerson' )? this.mapData.mapMarkers.markerGroupNaturalPersonCoords : this.mapData.mapMarkers.markerGroupEntityCoords;
+
 				this.markersList.forEach((marker)=> marker.setMap(null))
+
 				for(let markerCoord of markersCoords)
 				{
 					let marker = new this.google.maps.Marker({

@@ -63,5 +63,33 @@
     {
       "id": 2
     }
-  ]
+  ],
+  "map": {
+  "mapMarkers": {
+    "markerGroupNaturalPersonCoords": [
+      {"lat": 55.7555612, "lng": 37.6647919},
+      {"lat": 55.7455612, "lng": 37.6747919},
+      {"lat": 55.715612, "lng": 37.6647919},
+      {"lat": 55.7255612, "lng": 37.5647919},
+      {"lat": 55.7355612, "lng": 37.6647919}
+    ],
+    "markerGroupEntityCoords": [
+      {"lat": 55.7555612, "lng": 37.6757919},
+      {"lat": 55.7555612, "lng": 37.5647919},
+      {"lat": 55.7655612, "lng": 37.5847919},
+      {"lat": 55.7755612, "lng": 37.5347919},
+      {"lat": 55.7855612, "lng": 37.5747919}
+    ]
+  },
+  "mapOptions":{
+    "center": {"lat": 55.7488401, "lng": 37.6110285},
+    "zoom": 12,
+    "zoomControl": true,
+    "mapTypeControl": false,
+    "scaleControl": false,
+    "streetViewControl": false,
+    "rotateControl": false,
+    "fullscreenControl": false
+  }
+}
 }
