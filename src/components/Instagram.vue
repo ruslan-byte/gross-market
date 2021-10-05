@@ -1,14 +1,16 @@
-he<template>
-	<div class="instagram container">
-		<h2>мы в инстаграме</h2>
-		<ul class="instagram__image-list">
-			<li v-for="image of countViewImage" :key="image">
-				<a :href="imageList[image-1].url">
-					<img :src="imageList[image-1].imageSrc">
-				</a>
-			</li>
-		</ul>
-		<button @click="addCountViewImage" v-if="isAddButtonVisible">показать ещё</button>
+<template>
+	<div class="instagram">
+		<div class="container">
+			<h2>мы в инстаграме</h2>
+			<ul class="instagram__image-list">
+				<li v-for="image of countViewImage" :key="image">
+					<a :href="imageList[image-1].url">
+						<img :src="imageList[image-1].imageSrc">
+					</a>
+				</li>
+			</ul>
+			<button @click="addCountViewImage" v-if="isAddButtonVisible">показать ещё</button>
+		</div>
 	</div>
 </template>
 <script>
@@ -50,6 +52,7 @@ he<template>
 <style lang="scss">
 	.instagram
 	{
+		margin-bottom: 48px;
 		h2
 		{
 			margin: 0;
@@ -86,7 +89,9 @@ he<template>
 			border-radius: 8px;
 		}
 	}
-	@media (min-width: 768px) {
+	@media (min-width: 768px)
+	{
+		.instagram{margin-bottom: 72px}
 		.instagram__image-list
 		{
 			flex-direction: row;
@@ -108,6 +113,7 @@ he<template>
 	}
 	@media (min-width: 1440px)
 	{
+		.instagram{margin-bottom: 69px}
 		.instagram__image-list
 		{
 			display: grid;
